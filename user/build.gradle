@@ -1,0 +1,38 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.2'
+	id 'io.spring.dependency-management' version '1.1.4'
+    id 'org.jetbrains.kotlin.jvm' version '2.0.0-Beta3'
+	id 'org.jetbrains.kotlin.plugin.jpa' version '2.0.0-Beta3'
+	id 'org.jetbrains.kotlin.plugin.spring' version '2.0.0-Beta3'
+}
+
+group = 'com.ms'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	runtimeOnly 'org.postgresql:postgresql'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+	implementation("org.jetbrains.kotlin:kotlin-reflect")
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
+}
